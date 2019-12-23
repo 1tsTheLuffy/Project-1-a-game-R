@@ -13,6 +13,8 @@ public class Hog : MonoBehaviour
     private Transform Player;
     [SerializeField] Transform[] movePoints;
 
+    [SerializeField] LayerMask PlayerMask;
+
     Rigidbody2D rb;
     Animator animator;
 
@@ -30,8 +32,8 @@ public class Hog : MonoBehaviour
     private void Update()
     {
 
-        RaycastHit2D raycastRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance);
-        RaycastHit2D raycastLeft = Physics2D.Raycast(transform.position, -Vector2.right, rayDistance);
+        RaycastHit2D raycastRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance, PlayerMask);
+        RaycastHit2D raycastLeft = Physics2D.Raycast(transform.position, -Vector2.right, rayDistance, PlayerMask);
         if (raycastRight.collider != null)
         {
             if(raycastRight.collider.CompareTag("Player"))
@@ -41,6 +43,10 @@ public class Hog : MonoBehaviour
                 animator.SetBool("isRunning", true);
                 Debug.Log(raycastRight.transform.name + "Right Player..");
             }
+         //   else if(raycastRight.collider.CompareTag("Player"))
+          //  {
+           //     Physics2D.IgnoreCollision(collider1 : raycastRight.collider, collider2 : raycastRight.collider);
+            //}
         }
         else if (raycastLeft.collider != null)
         {
@@ -52,6 +58,10 @@ public class Hog : MonoBehaviour
                 // Flip();
                 Debug.Log(raycastLeft.transform.name + "Left Player..");
             }
+     //       else if (raycastRight.collider.CompareTag("Player"))
+      //      {
+       //         Physics2D.IgnoreCollision(collider1: raycastRight.collider, collider2: raycastRight.collider);
+         //   }
         }
         else
         {
