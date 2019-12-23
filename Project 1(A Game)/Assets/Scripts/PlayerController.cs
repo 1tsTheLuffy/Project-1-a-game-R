@@ -20,14 +20,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float wallSlidingForce;
     [SerializeField] float timer;
     [SerializeField] float timeBtwShoot;
+    [SerializeField] float slidingParticleDestroyTime;
 
     [SerializeField] Vector2 wallJumpDirection;
 
+    private GameObject instance;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject slidingParticles;
 
     [SerializeField] Transform jumpPoint;
     [SerializeField] Transform wallPoint;
     [SerializeField] Transform shootPoint;
+    [SerializeField] Transform slidingParticlesPoint;
 
     [SerializeField] LayerMask ground;
     [SerializeField] LayerMask Wall;
@@ -71,11 +75,13 @@ public class PlayerController : MonoBehaviour
             if(rb.velocity.y < -wallSlidingForce)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlidingForce);
+                instance = Instantiate(slidingParticles, slidingParticlesPoint.position, Quaternion.identity);
             }
         }else
         {
             animator.SetBool("isWallSliding", false);
         }
+        Destroy(instance, slidingParticleDestroyTime);
 
         if(Input.GetKeyDown(KeyCode.X) && xAxis == 0 && timer <= 0)
         {
