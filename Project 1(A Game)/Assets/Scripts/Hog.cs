@@ -8,6 +8,7 @@ public class Hog : MonoBehaviour
     [SerializeField] bool isRight;
     [SerializeField] float movementSpeed;
     [SerializeField] float runSpeed;
+    [SerializeField] float rayDistance;
 
     private Transform Player;
     [SerializeField] Transform[] movePoints;
@@ -21,6 +22,7 @@ public class Hog : MonoBehaviour
         animator = GetComponent<Animator>();
         Player = GameObject.FindGameObjectWithTag("Player").transform;
 
+        Physics2D.queriesStartInColliders = false;
         // randomPoint = Random.Range(0, movePoints.Length);
         randomPoint = 1;
     }
@@ -28,33 +30,40 @@ public class Hog : MonoBehaviour
     private void Update()
     {
 
-        float distance = Vector2.Distance(transform.position, Player.position);
-        Debug.Log(distance);
-        if(distance <= 6f)
+        RaycastHit2D raycastRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance);
+        RaycastHit2D raycastLeft = Physics2D.Raycast(transform.position, -Vector2.right, rayDistance);
+        if (raycastRight.collider != null)
         {
-            if(Player.position.x > transform.position.x && Player.position.y > transform.position.y)
+            if(raycastRight.collider.CompareTag("Player"))
             {
-              //  transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
-                Debug.Log("Right!!");
+                transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
+                transform.localScale = new Vector2(-1, 1);
+                animator.SetBool("isRunning", true);
+                Debug.Log(raycastRight.transform.name + "Right Player..");
             }
-            else if(Player.position.x < transform.position.x && Player.position.y < transform.position.y)
+        }
+        else if (raycastLeft.collider != null)
+        {
+            if (raycastLeft.collider.CompareTag("Player"))
             {
-              //  transform.Translate(-Vector3.right * runSpeed * Time.deltaTime);
-                Debug.Log("Left!!");
+                transform.Translate(Vector3.left * runSpeed * Time.deltaTime);
+                transform.localScale = new Vector2(1, 1);
+                animator.SetBool("isRunning", true);
+                // Flip();
+                Debug.Log(raycastLeft.transform.name + "Left Player..");
             }
         }
         else
         {
+            animator.SetBool("isRunning", false);
             if (!isRight)
             {
                 transform.Translate(movementSpeed * Time.deltaTime, 0, 0);
-                //Flip();
                 transform.localScale = new Vector2(-1, 1);
             }
             else
             {
                 transform.Translate(-movementSpeed * Time.deltaTime, 0, 0);
-                //Flip();
                 transform.localScale = new Vector2(1, 1);
             }
 
@@ -67,6 +76,9 @@ public class Hog : MonoBehaviour
                 isRight = false;
             }
         }
+
+        //// Right Raycast.(but there is a problem here).
+ 
     }
 
     private void Flip()
