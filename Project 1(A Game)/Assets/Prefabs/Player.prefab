@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1101772655617026285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7858554413663044126}
+  m_Layer: 10
+  m_Name: Running Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7858554413663044126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101772655617026285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.014, y: -0.465, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2954440911062363428}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2954440909161260173
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,9 +134,9 @@ GameObject:
   - component: {fileID: 2954440911062363435}
   - component: {fileID: 2954440911062363434}
   - component: {fileID: 2954440911062363429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +156,7 @@ Transform:
   - {fileID: 2954440909161260402}
   - {fileID: 2954440909774472813}
   - {fileID: 3032399979071116285}
+  - {fileID: 7858554413663044126}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -256,14 +287,18 @@ MonoBehaviour:
   timer: 1
   timeBtwShoot: 1
   slidingParticleDestroyTime: 0.1
+  runningParticleDestroyTime: 0.1
   wallJumpDirection: {x: 2, y: 2}
   bullet: {fileID: 5367881800733578063, guid: a2d52b7b798505b4a86f266a25dc36ff, type: 3}
   slidingParticles: {fileID: 6753403593778514688, guid: 870692de729d0634eb4222dffd0458d2,
+    type: 3}
+  runningParticle: {fileID: 5693087159254313724, guid: dd47f29cda7df614f93bf4f9b052dc74,
     type: 3}
   jumpPoint: {fileID: 2954440910868600280}
   wallPoint: {fileID: 2954440909774472813}
   shootPoint: {fileID: 2954440909161260402}
   slidingParticlesPoint: {fileID: 3032399979071116285}
+  runningParticlePosition: {fileID: 7858554413663044126}
   ground:
     serializedVersion: 2
     m_Bits: 768

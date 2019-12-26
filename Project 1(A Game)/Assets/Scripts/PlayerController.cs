@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private bool isRight;
     private float xAxis;
+
+    [Header("Floats")]
     [SerializeField] float movementSpeed;
     [Range(0f,5f)]
     [SerializeField] float radius;
@@ -21,18 +23,26 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] float timeBtwShoot;
     [SerializeField] float slidingParticleDestroyTime;
+  //  [SerializeField] float runningParticleDestroyTime;
 
+    [Header("Vector")]
     [SerializeField] Vector2 wallJumpDirection;
 
     private GameObject instance;
+    private GameObject instanceForRunningParticle;
+    [Header("GameObjects")]
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject slidingParticles;
+  //  [SerializeField] GameObject runningParticle;
 
+    [Header("Transforms")]
     [SerializeField] Transform jumpPoint;
     [SerializeField] Transform wallPoint;
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform slidingParticlesPoint;
+  //  [SerializeField] Transform runningParticlePosition;
 
+    [Header("LayerMasks")]
     [SerializeField] LayerMask ground;
     [SerializeField] LayerMask Wall;
 
@@ -59,7 +69,9 @@ public class PlayerController : MonoBehaviour
         }else
         {
             animator.SetBool("isRunning", true);
+           // instanceForRunningParticle = Instantiate(runningParticle, runningParticlePosition.position, runningParticlePosition.rotation);
         }
+      //  Destroy(runningParticle, runningParticleDestroyTime);
 
         if(xAxis < 0 && !isRight)
         {
