@@ -35,26 +35,35 @@ public class Duck : MonoBehaviour
             {
                 animator.SetBool("isWalking", false);
                 yield return new WaitForSeconds(5f);
-                i = Random.Range(1, 11);
+                i = Random.Range(1, 17);
             }
             else if (i >= 4 && i <= 8)
             {
                 Flip();
                 animator.SetBool("isWalking", true);
                 yield return new WaitForSeconds(5f);
-                i = Random.Range(1, 11);
+                i = Random.Range(1, 17);
             }else if(i >= 9 && i <= 13)
             {
                 Flip();
                 animator.SetBool("isWalking", true);
                 yield return new WaitForSeconds(5f);
-                i = Random.Range(1, 11);
-            }else if(i >= 14 && i<= 17)
+                i = Random.Range(1, 17);
+            }else// if(i >= 14 && i<= 17)
             {
                 animator.SetBool("isEating", true);
                 animator.SetBool("isWalking", false);
                 yield return new WaitForSeconds(5f);
                 i = Random.Range(1, 17);
+                if(i >= 1 && i <= 3)
+                {
+                    animator.SetBool("isWalking", false);
+                    animator.SetBool("isEating", false);
+                }else if(i >= 4 && i<= 13)
+                {
+                    animator.SetBool("isEating", false);
+                    animator.SetBool("isWalking", true);
+                }
             }
         }
     }
