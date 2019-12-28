@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
     private int i = 1;
-    private bool isOnWall;
+    [SerializeField] private bool isOnWall;
     private bool isGrounded;
     private bool isRight;
     private float xAxis;
@@ -18,15 +19,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float wallJumpRadius;
     [SerializeField] float jumpForce;
     [SerializeField] float wallJumpForce;
+    [SerializeField] float sideWallJumpForce;
     [SerializeField] float jumpWaitTime;
     [SerializeField] float wallSlidingForce;
     [SerializeField] float timer;
     [SerializeField] float timeBtwShoot;
     [SerializeField] float slidingParticleDestroyTime;
+    [SerializeField] float recoilForce;
   //  [SerializeField] float runningParticleDestroyTime;
 
     [Header("Vector")]
     [SerializeField] Vector2 wallJumpDirection;
+    [SerializeField] Vector2 sideWallJumpDirection;
 
     private GameObject instance;
     private GameObject instanceForRunningParticle;
@@ -46,6 +50,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask ground;
     [SerializeField] LayerMask Wall;
 
+    [SerializeField] CinemachineVirtualCamera virtaulCamera;
+    private CinemachineBasicMultiChannelPerlin virtualNoiseCamera;
+
+    [SerializeField] float elapsedTime;
+    [SerializeField] float shakeDuration;
+    [SerializeField] float shakeAmplitude;
+    [SerializeField] float shakeFrequency;
+
     Rigidbody2D rb;
     Animator animator;
 
@@ -54,7 +66,14 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        if(virtaulCamera != null)
+        {
+            virtualNoiseCamera = virtaulCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
+        }
+
         timer = timeBtwShoot;
+
+        sideWallJumpDirection.Normalize();
     }
 
     private void Update()
@@ -95,11 +114,16 @@ public class PlayerController : MonoBehaviour
         }
         Destroy(instance, slidingParticleDestroyTime);
 
-        if(Input.GetKeyDown(KeyCode.X) && xAxis == 0 && timer <= 0)
+        // For Shooting..
+        if(Input.GetKeyDown(KeyCode.X) && xAxis == 0 && timer <= 0 && !isOnWall)
         {
             animator.SetBool("isShooting", true);
+            RecoilForce();
+            elapsedTime = shakeDuration;
             Shoot();
+            //rb.AddForce(Vector3.left * recoilForce*recoilForce, ForceMode2D.Impulse);
             timer = timeBtwShoot;
+            
         }else
         {
             timer -= Time.deltaTime;
@@ -109,9 +133,12 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isShooting", false);
         }
 
+        // For running and shooting..
         if(Input.GetKeyDown(KeyCode.X) && xAxis != 0 && timer <= 0)
         {
             animator.SetBool("isRunningShooting", true);
+            RecoilForce();
+            elapsedTime = shakeDuration;
             Shoot();
             timer = timeBtwShoot;
         }else
@@ -122,6 +149,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunningShooting", false);
         }
+
+        CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
     }
 
     private void FixedUpdate()
@@ -151,14 +180,20 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isRunningJumping", false);
         }
 
-        if(xAxis != 0)
-        {
-            Debug.Log(isRight);
-        }
+        //if(xAxis != 0)
+        //{
+        //    Debug.Log(isRight);
+        //}
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
             WallJump();
+        }
+
+        //for side wall jump(just like dash but not that speed)..
+        if(Input.GetKey(KeyCode.Z) && xAxis != 0)
+        {
+            SideWallJump();
         }
     }
 
@@ -176,18 +211,67 @@ public class PlayerController : MonoBehaviour
     {
         if(isOnWall && isRight)
         {
-            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * i *Time.fixedDeltaTime, wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
+            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * i *Time.fixedDeltaTime, 
+                wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
             rb.AddForce(addForce, ForceMode2D.Impulse);
         }else if(isOnWall && !isRight)
         {
-            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * -1 *Time.fixedDeltaTime, wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
+            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * -1 * Time.fixedDeltaTime, 
+                wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
             rb.AddForce(addForce, ForceMode2D.Impulse);
         }
+        Debug.Log("Simple Wall jump performed");
+    }
+
+    private void SideWallJump()
+    {
+        if(isOnWall && isRight && xAxis > 0)
+        {
+            Vector2 addForce = new Vector2(sideWallJumpForce * sideWallJumpDirection.x,
+               sideWallJumpForce * sideWallJumpDirection.y);
+            rb.AddForce(addForce, ForceMode2D.Impulse);
+        }else if(isOnWall && !isRight && xAxis < 0)
+        {
+            Vector2 addForce = new Vector2(sideWallJumpForce * -sideWallJumpDirection.x ,
+                sideWallJumpForce * sideWallJumpDirection.y);
+            rb.AddForce(addForce, ForceMode2D.Impulse);
+        }
+
+        Debug.Log("Side wall jump performed");
     }
 
     private void Shoot()
     {
         Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+    }
+
+    private void RecoilForce()
+    {
+        if(isRight)
+        {
+            rb.AddForce(Vector3.right * recoilForce, ForceMode2D.Force);
+            Debug.Log("Right Force Added..");
+        }else if(!isRight)
+        {
+            rb.AddForce(-Vector3.right * recoilForce, ForceMode2D.Force);
+            Debug.Log("Left Force Added..");
+        }
+    }
+
+    private void CameraShake()
+    {
+        if(elapsedTime > 0)
+        {
+            virtualNoiseCamera.m_AmplitudeGain = shakeAmplitude;
+            virtualNoiseCamera.m_FrequencyGain = shakeFrequency;
+            elapsedTime -= Time.deltaTime;
+        }
+        else
+        {
+            elapsedTime = 0;
+            virtualNoiseCamera.m_FrequencyGain = 0;
+            virtualNoiseCamera.m_AmplitudeGain = 0;
+        }
     }
 
     private void Flip()

@@ -277,34 +277,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1388a24f1805014fbdcfba41998ef1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnWall: 0
   movementSpeed: 250
   radius: 0.16
   wallJumpRadius: 0.14
   jumpForce: 800
   wallJumpForce: 450
+  sideWallJumpForce: 40
   jumpWaitTime: 0.18
-  wallSlidingForce: 2
+  wallSlidingForce: 4
   timer: 1
   timeBtwShoot: 1
   slidingParticleDestroyTime: 0.1
-  runningParticleDestroyTime: 0.1
+  recoilForce: 500
   wallJumpDirection: {x: 2, y: 2}
+  sideWallJumpDirection: {x: 2, y: 2}
   bullet: {fileID: 5367881800733578063, guid: a2d52b7b798505b4a86f266a25dc36ff, type: 3}
   slidingParticles: {fileID: 6753403593778514688, guid: 870692de729d0634eb4222dffd0458d2,
-    type: 3}
-  runningParticle: {fileID: 5693087159254313724, guid: dd47f29cda7df614f93bf4f9b052dc74,
     type: 3}
   jumpPoint: {fileID: 2954440910868600280}
   wallPoint: {fileID: 2954440909774472813}
   shootPoint: {fileID: 2954440909161260402}
   slidingParticlesPoint: {fileID: 3032399979071116285}
-  runningParticlePosition: {fileID: 7858554413663044126}
   ground:
     serializedVersion: 2
     m_Bits: 768
   Wall:
     serializedVersion: 2
     m_Bits: 512
+  virtaulCamera: {fileID: 0}
+  elapsedTime: 0
+  shakeDuration: 0.1
+  shakeAmplitude: 2
+  shakeFrequency: 2
 --- !u!1 &7472153384245187982
 GameObject:
   m_ObjectHideFlags: 0
