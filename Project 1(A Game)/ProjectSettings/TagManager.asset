@@ -44,6 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Tree Trunk
+    uniqueID: 3259876965
+    locked: 0
+  - name: Tree Bush
+    uniqueID: 2988629683
+    locked: 0
   - name: Bush
     uniqueID: 2594510189
     locked: 0
