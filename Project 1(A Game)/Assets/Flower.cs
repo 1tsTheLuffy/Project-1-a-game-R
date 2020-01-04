@@ -6,9 +6,9 @@ public class Flower : MonoBehaviour
 {
     [SerializeField] float waitTime;
 
-    [SerializeField] GameObject particle;
+    //[SerializeField] GameObject particle;
 
-    [SerializeField] Transform point;
+    //[SerializeField] Transform point;
 
     Rigidbody2D rb;
     Animator animator;
@@ -24,7 +24,7 @@ public class Flower : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             animator.SetBool("isTouched", true);
-            Instantiate(particle, point.position, Quaternion.identity);
+            //Instantiate(particle, point.position, Quaternion.identity);
             StartCoroutine(setIdle());
         }
     }
