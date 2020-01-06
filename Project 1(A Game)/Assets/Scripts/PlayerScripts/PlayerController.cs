@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -60,11 +61,14 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    [SerializeField] GameManager gameManager;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        transform.position = gameManager.lastCheckPointPosition;
 
         if(virtaulCamera != null)
         {
@@ -148,6 +152,11 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.X) && xAxis != 0)
         {
             animator.SetBool("isRunningShooting", false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            SceneManager.LoadScene(0);
         }
 
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
@@ -275,11 +284,12 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    private void OnBecameInvisible()
-    {
-        Debug.Log("Game Over");
-      //  gameObject.SetActive(false);
-    }
+    //private void OnBecameInvisible()
+    //{
+    //    Debug.Log("Game Over");
+    //    SceneManager.LoadScene("01");
+    //  //  gameObject.SetActive(false);
+    //}
 
     private void OnDrawGizmosSelected()
     {

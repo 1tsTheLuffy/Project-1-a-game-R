@@ -5,6 +5,7 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     [SerializeField] float waitTime;
+    [SerializeField] float test;
 
     //[SerializeField] GameObject particle;
 
