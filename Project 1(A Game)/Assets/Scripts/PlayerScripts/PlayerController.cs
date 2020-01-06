@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        transform.position = gameManager.lastCheckPointPosition;
+       // transform.position = gameManager.lastCheckPointPosition;
 
         if(virtaulCamera != null)
         {
