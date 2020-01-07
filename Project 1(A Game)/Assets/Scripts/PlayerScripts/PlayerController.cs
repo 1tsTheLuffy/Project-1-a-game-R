@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-       // transform.position = gameManager.lastCheckPointPosition;
+        transform.position = gameManager.lastCheckPointPosition;
 
         if(virtaulCamera != null)
         {
@@ -157,6 +157,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             SceneManager.LoadScene(0);
+        }
+
+        // Doing this because is both are true then the player will do a double jump..
+        if(isGrounded && isOnWall)
+        {
+            isGrounded = false;
         }
 
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.

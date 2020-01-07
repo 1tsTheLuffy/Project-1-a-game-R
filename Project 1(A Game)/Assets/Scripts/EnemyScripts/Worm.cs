@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Worm : MonoBehaviour
 {
-    [SerializeField] float timer;
-    [SerializeField] float timeBtwUp;
+    //[SerializeField] float timer;
+    //[SerializeField] float timeBtwUp;
 
     Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
-        timer = timeBtwUp;
+        //timer = timeBtwUp;
 
         StartCoroutine(anim());
     }

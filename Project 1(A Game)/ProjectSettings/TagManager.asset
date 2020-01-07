@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Birds
+    uniqueID: 1203915675
+    locked: 0
   - name: Tree Trunk
     uniqueID: 3259876965
     locked: 0
@@ -59,6 +62,9 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 1244452067
+    locked: 0
+  - name: NPC Animals
+    uniqueID: 2701173153
     locked: 0
   - name: Grass And Flower
     uniqueID: 1392977431
