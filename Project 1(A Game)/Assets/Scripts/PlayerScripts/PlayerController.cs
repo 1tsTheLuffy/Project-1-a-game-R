@@ -221,12 +221,12 @@ public class PlayerController : MonoBehaviour
     {
         if(isOnWall && isRight)
         {
-            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * i *Time.fixedDeltaTime, 
+            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * i * Time.deltaTime, 
                 wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
             rb.AddForce(addForce, ForceMode2D.Impulse);
         }else if(isOnWall && !isRight)
         {
-            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * -1 * Time.fixedDeltaTime, 
+            Vector2 addForce = new Vector2(wallJumpDirection.x * wallJumpForce * -1 * Time.deltaTime, 
                 wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
             rb.AddForce(addForce, ForceMode2D.Impulse);
         }
