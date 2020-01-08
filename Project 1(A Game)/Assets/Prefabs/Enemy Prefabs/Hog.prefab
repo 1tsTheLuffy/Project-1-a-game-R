@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6521150052154386529}
   m_Layer: 0
   m_Name: Hog
-  m_TagString: Untagged
+  m_TagString: Hog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046c6e71a376fca4096c9c3503d4c6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  r: {fileID: 6521150052154386532}
   isRight: 0
   movementSpeed: 0.5
   runSpeed: 5

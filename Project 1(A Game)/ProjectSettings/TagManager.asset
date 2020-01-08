@@ -8,6 +8,7 @@ TagManager:
   - WallTag
   - Base
   - GameManager
+  - Hog
   layers:
   - Default
   - TransparentFX
@@ -60,15 +61,18 @@ TagManager:
   - name: Bush
     uniqueID: 2594510189
     locked: 0
+  - name: Benches and Lamps
+    uniqueID: 2933222519
+    locked: 0
   - name: Platform
     uniqueID: 1244452067
     locked: 0
   - name: NPC Animals
     uniqueID: 2701173153
     locked: 0
-  - name: Grass And Flower
-    uniqueID: 1392977431
-    locked: 0
   - name: Player
     uniqueID: 3562762893
+    locked: 0
+  - name: Grass And Flower
+    uniqueID: 1392977431
     locked: 0

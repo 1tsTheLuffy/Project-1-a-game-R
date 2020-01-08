@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hog : MonoBehaviour
 {
+    [SerializeField] Renderer r;
     private int randomPoint;
     [SerializeField] bool isRight;
     [SerializeField] float movementSpeed;
@@ -88,8 +89,28 @@ public class Hog : MonoBehaviour
         }
 
         //// Right Raycast.(but there is a problem here).
- 
+            
+
+        //if(r.isVisible == false)
+        //{
+        //    transform.gameObject.SetActive(false);
+        //    Debug.Log("Not Visible!!");
+        //}
+        //else
+        //{
+        //    transform.gameObject.SetActive(true);
+        //}
     }
+
+    //private void OnBecameInvisible()
+    //{
+    //    transform.gameObject.SetActive(false);
+    //}
+
+    //private void OnBecameVisible()
+    //{
+    //    transform.gameObject.SetActive(true);
+    //}
 
     private void Flip()
     {
