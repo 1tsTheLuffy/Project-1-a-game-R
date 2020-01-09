@@ -29,7 +29,7 @@ public class PlayerBullet : MonoBehaviour
         if(collision.CompareTag("WallTag"))
         {
             Destroy(gameObject);
-            Debug.Log("Wall..");
+            //Debug.Log("Wall..");
         }
     }
 

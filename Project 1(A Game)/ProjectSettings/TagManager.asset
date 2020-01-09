@@ -9,6 +9,8 @@ TagManager:
   - Base
   - GameManager
   - Hog
+  - CullingTag
+  - Grandpa
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - Ground
   - Wall
   - Player
-  - 
+  - Grass
   - 
   - 
   - 

@@ -17,9 +17,4 @@ public class Bird : MonoBehaviour
     {
         transform.Translate(Vector3.left * flyingSpeed * Time.fixedDeltaTime);
     }
-
-    private void OnBecameInvisible()
-    {
-        Debug.Log("It is out of screen..");
-    }
 }

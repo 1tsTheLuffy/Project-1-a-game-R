@@ -13,6 +13,8 @@ public class Grass : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+       // Physics2D.queriesHitTriggers = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float timeBtwShoot;
     [SerializeField] float slidingParticleDestroyTime;
     [SerializeField] float recoilForce;
+    [Range(0,200f)]
+    [SerializeField] float rayDistance;
   //  [SerializeField] float runningParticleDestroyTime;
 
     [Header("Vector")]
@@ -45,11 +47,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform wallPoint;
     [SerializeField] Transform shootPoint;
     [SerializeField] Transform slidingParticlesPoint;
+    [SerializeField] Transform cullingPoint;
   //  [SerializeField] Transform runningParticlePosition;
 
     [Header("LayerMasks")]
     [SerializeField] LayerMask ground;
     [SerializeField] LayerMask Wall;
+    [SerializeField] LayerMask Grass;
 
     [SerializeField] CinemachineVirtualCamera virtaulCamera;
     private CinemachineBasicMultiChannelPerlin virtualNoiseCamera;
@@ -61,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+   // RaycastHit2D raycast;
     [SerializeField] GameManager gameManager;
 
     private void Start()
@@ -166,6 +171,7 @@ public class PlayerController : MonoBehaviour
         }
 
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
+      //  FrustrunCulling();
     }
 
     private void FixedUpdate()
@@ -230,7 +236,7 @@ public class PlayerController : MonoBehaviour
                 wallJumpDirection.y * wallJumpForce * Time.fixedDeltaTime);
             rb.AddForce(addForce, ForceMode2D.Impulse);
         }
-        Debug.Log("Simple Wall jump performed");
+      //  Debug.Log("Simple Wall jump performed");
     }
 
     private void SideWallJump()
@@ -247,7 +253,7 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(addForce, ForceMode2D.Impulse);
         }
 
-        Debug.Log("Side wall jump performed");
+      //  Debug.Log("Side wall jump performed");
     }
 
     private void Shoot()
@@ -260,11 +266,11 @@ public class PlayerController : MonoBehaviour
         if(isRight)
         {
             rb.AddForce(Vector3.right * recoilForce, ForceMode2D.Force);
-            Debug.Log("Right Force Added..");
+          //  Debug.Log("Right Force Added..");
         }else if(!isRight)
         {
             rb.AddForce(-Vector3.right * recoilForce, ForceMode2D.Force);
-            Debug.Log("Left Force Added..");
+           // Debug.Log("Left Force Added..");
         }
     }
 
@@ -290,16 +296,9 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
-    //private void OnBecameInvisible()
-    //{
-    //    Debug.Log("Game Over");
-    //    SceneManager.LoadScene("01");
-    //  //  gameObject.SetActive(false);
-    //}
-
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(jumpPoint.position, radius);
-        Gizmos.DrawWireSphere(wallPoint.position, wallJumpRadius);
+       // Gizmos.DrawWireSphere(jumpPoint.position, radius);
+      //  Gizmos.DrawWireSphere(wallPoint.position, wallJumpRadius);
     }
 }
