@@ -11,6 +11,7 @@ TagManager:
   - Hog
   - CullingTag
   - Grandpa
+  - Duck
   layers:
   - Default
   - TransparentFX
@@ -54,14 +55,20 @@ TagManager:
   - name: Birds
     uniqueID: 1203915675
     locked: 0
+  - name: Bush
+    uniqueID: 2594510189
+    locked: 0
   - name: Tree Trunk
     uniqueID: 3259876965
     locked: 0
   - name: Tree Bush
     uniqueID: 2988629683
     locked: 0
-  - name: Bush
-    uniqueID: 2594510189
+  - name: House
+    uniqueID: 4136390957
+    locked: 0
+  - name: Fence
+    uniqueID: 4035401101
     locked: 0
   - name: Benches and Lamps
     uniqueID: 2933222519

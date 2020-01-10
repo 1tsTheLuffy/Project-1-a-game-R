@@ -19,7 +19,7 @@ public class Grass : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player") || collision.CompareTag("Hog"))
+        if(collision.CompareTag("Player") || collision.CompareTag("Hog") || collision.CompareTag("Duck"))
         {
             animator.SetBool("isTouched", true);
             StartCoroutine(setIdle());
