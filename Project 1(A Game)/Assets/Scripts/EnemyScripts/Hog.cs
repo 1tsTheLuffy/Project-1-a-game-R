@@ -42,7 +42,7 @@ public class Hog : MonoBehaviour
                 transform.Translate(Vector3.right * runSpeed * Time.deltaTime);
                 transform.localScale = new Vector2(-1, 1);
                 animator.SetBool("isRunning", true);
-                Debug.Log(raycastRight.transform.name + "Right Player..");
+             //   Debug.Log(raycastRight.transform.name + "Right Player..");
             }
          //   else if(raycastRight.collider.CompareTag("Player"))
           //  {
@@ -57,7 +57,7 @@ public class Hog : MonoBehaviour
                 transform.localScale = new Vector2(1, 1);
                 animator.SetBool("isRunning", true);
                 // Flip();
-                Debug.Log(raycastLeft.transform.name + "Left Player..");
+              //  Debug.Log(raycastLeft.transform.name + "Left Player..");
             }
      //       else if (raycastRight.collider.CompareTag("Player"))
       //      {

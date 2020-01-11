@@ -76,6 +76,9 @@ TagManager:
   - name: NPC Animals
     uniqueID: 2701173153
     locked: 0
+  - name: Enemy
+    uniqueID: 1620807235
+    locked: 0
   - name: Player
     uniqueID: 3562762893
     locked: 0
@@ -84,4 +87,7 @@ TagManager:
     locked: 0
   - name: Platform
     uniqueID: 1244452067
+    locked: 0
+  - name: Coin
+    uniqueID: 4238634731
     locked: 0

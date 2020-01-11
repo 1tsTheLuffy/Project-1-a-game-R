@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float recoilForce;
     [Range(0,200f)]
     [SerializeField] float rayDistance;
+
+    public int coins = 0;
   //  [SerializeField] float runningParticleDestroyTime;
 
     [Header("Vector")]
