@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerController playerController;
+    Rigidbody2D rb;
+    Animator animator;
+    SpriteRenderer sr;
+
+    private void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.CompareTag("Player"))
+        {
+            animator.SetTrigger("PickUp");
+            playerController.coins++;
+            FindObjectOfType<AudioManager>().Play("Coin_PickUp");
+            StartCoroutine(disable());
+        }
+    }
+
+    IEnumerator disable()
+    {
+        yield return new WaitForSeconds(.1f);
+        Destroy(gameObject);
     }
 }

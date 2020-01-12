@@ -12,6 +12,7 @@ TagManager:
   - CullingTag
   - Grandpa
   - Duck
+  - Coin
   layers:
   - Default
   - TransparentFX

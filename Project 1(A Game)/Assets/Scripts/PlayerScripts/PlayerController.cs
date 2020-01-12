@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
+        // For sliding..
         if(isOnWall)
         {
             animator.SetBool("isWallSliding", true);
@@ -184,6 +185,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("TakeOff");
             Invoke("IdleJump", jumpWaitTime);
+            Invoke("jumpSound", jumpWaitTime);
         }
         if(isGrounded)
         {
@@ -197,6 +199,7 @@ public class PlayerController : MonoBehaviour
         {
             RunningJump();
             animator.SetBool("isRunningJumping", true);
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
         else if(isGrounded)
         {
@@ -213,6 +216,11 @@ public class PlayerController : MonoBehaviour
         {
             SideWallJump();
         }
+    }
+
+    private void  jumpSound() // For involing jump sound when we do an idle jump..
+    {
+        FindObjectOfType<AudioManager>().Play("Jump");
     }
 
     private void RunningJump()
