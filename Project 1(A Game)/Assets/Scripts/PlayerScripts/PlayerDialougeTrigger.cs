@@ -18,6 +18,8 @@ public class PlayerDialougeTrigger : MonoBehaviour
     private void Start()
     {
         GrandpaPos = GameObject.FindGameObjectWithTag("Grandpa").transform;
+
+       // dialougeTrigger[0].Trigger();
         pressImage.SetActive(false);
     }
 
@@ -33,7 +35,7 @@ public class PlayerDialougeTrigger : MonoBehaviour
             pressImage.SetActive(false);
         }
 
-        if(distance <= minDistance && Input.GetKeyDown(KeyCode.E))
+        if(distance <= minDistance && Input.GetKeyDown(KeyCode.E) && dm.animator.GetBool("IsOpen") == false)
         {
             dialougeTrigger[0].Trigger();
         }

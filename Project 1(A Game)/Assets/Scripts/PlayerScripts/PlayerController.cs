@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float rayDistance;
 
     public int coins = 0;
+    public int health = 10;
   //  [SerializeField] float runningParticleDestroyTime;
 
     [Header("Vector")]
@@ -67,6 +68,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    DialougeManager dm;
    // RaycastHit2D raycast;
     [SerializeField] GameManager gameManager;
 
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        dm = GameObject.FindGameObjectWithTag("DialougeManager").GetComponent<DialougeManager>();
         transform.position = gameManager.lastCheckPointPosition;
 
         if(virtaulCamera != null)
@@ -96,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if(xAxis == 0)
         {
             animator.SetBool("isRunning", false);
-        }else
+        }else if(dm.animator.GetBool("IsOpen") == false)
         {
             animator.SetBool("isRunning", true);
            // instanceForRunningParticle = Instantiate(runningParticle, runningParticlePosition.position, runningParticlePosition.rotation);
@@ -172,13 +175,20 @@ public class PlayerController : MonoBehaviour
         {
             isGrounded = false;
         }
+        if(dm.animator.GetBool("IsOpen") == true)
+        {
+            movementSpeed = 0f;
+        }else
+        {
+            movementSpeed = 250f;
+        }
 
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
-      //  FrustrunCulling();
     }
 
     private void FixedUpdate()
     {
+        // For movement..
         rb.velocity = new Vector2(xAxis * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
 
         if(Input.GetKeyDown(KeyCode.Z) && isGrounded && xAxis == 0)
@@ -215,6 +225,30 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.Z) && xAxis != 0)
         {
             SideWallJump();
+        }
+
+        if(health <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
+        if(transform.position.y <= -12.5f)
+        {
+            health = 0;
+        }
+    }
+
+    //For Fall Damage..//
+    //
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.transform.CompareTag("Ground") || 
+            collision.collider.transform.CompareTag("WallTag"))
+        {
+            if(collision.relativeVelocity.y > 25f)
+            {
+                health--;
+            }
         }
     }
 

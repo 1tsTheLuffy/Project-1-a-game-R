@@ -13,6 +13,8 @@ TagManager:
   - Grandpa
   - Duck
   - Coin
+  - DialougeManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX
