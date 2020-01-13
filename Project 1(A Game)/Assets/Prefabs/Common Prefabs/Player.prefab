@@ -371,8 +371,9 @@ MonoBehaviour:
   slidingParticleDestroyTime: 0.1
   recoilForce: 500
   rayDistance: 100
-  coins: 0
+  coins: 20
   health: 10
+  coinText: {fileID: 0}
   wallJumpDirection: {x: 2, y: 2}
   sideWallJumpDirection: {x: 2, y: 2}
   bullet: {fileID: 5367881800733578063, guid: a2d52b7b798505b4a86f266a25dc36ff, type: 3}
@@ -398,6 +399,8 @@ MonoBehaviour:
   shakeAmplitude: 2
   shakeFrequency: 2
   gameManager: {fileID: 0}
+  coinAnimator: {fileID: 2725423422531331978, guid: 4b6fc3fce581a6c46ac4f9c8977a1d54,
+    type: 3}
 --- !u!114 &2954440910831371892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,9 +438,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistance: 1
   GrandpaPos: {fileID: 0}
+  Doctor: {fileID: 0}
   pressImage: {fileID: 925005830}
+  playGameButton: {fileID: 0}
   dialougeTrigger:
   - {fileID: 2954440910831371892}
+  - {fileID: 8033110574834842096}
+  - {fileID: 6854542140598892299}
   dm: {fileID: 0}
 --- !u!114 &8033110574834842096
 MonoBehaviour:

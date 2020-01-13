@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,7 +33,10 @@ public class PlayerController : MonoBehaviour
 
     public int coins = 0;
     public int health = 10;
-  //  [SerializeField] float runningParticleDestroyTime;
+    //  [SerializeField] float runningParticleDestroyTime;
+
+
+    [SerializeField] TextMeshProUGUI coinText;
 
     [Header("Vector")]
     [SerializeField] Vector2 wallJumpDirection;
@@ -71,6 +75,7 @@ public class PlayerController : MonoBehaviour
     DialougeManager dm;
    // RaycastHit2D raycast;
     [SerializeField] GameManager gameManager;
+    [SerializeField] Animator coinAnimator;
 
     private void Start()
     {
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
         timer = timeBtwShoot;
 
         sideWallJumpDirection.Normalize();
+        coinText.text = coins.ToString();
     }
 
     private void Update()
@@ -184,6 +190,8 @@ public class PlayerController : MonoBehaviour
         }
 
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
+
+        coinText.text = coins.ToString();
     }
 
     private void FixedUpdate()
@@ -232,7 +240,7 @@ public class PlayerController : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        if(transform.position.y <= -12.5f)
+        if(transform.position.y <= -25f)
         {
             health = 0;
         }
@@ -251,6 +259,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if(collision.CompareTag("Coin"))
+    //    {
+    //        coins++;
+    //    }
+    //}
 
     private void  jumpSound() // For involing jump sound when we do an idle jump..
     {
