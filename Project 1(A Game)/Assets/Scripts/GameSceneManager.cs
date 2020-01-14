@@ -17,7 +17,7 @@ public class GameSceneManager : MonoBehaviour
 
     public void LoadSceneFromCheckPoint()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(01);
     }
 
     public void QuitApplication()

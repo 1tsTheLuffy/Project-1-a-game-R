@@ -192,6 +192,20 @@ public class PlayerController : MonoBehaviour
             movementSpeed = 250f;
         }
 
+
+
+        if (Input.GetKeyDown(KeyCode.Z) && isGrounded)
+        {
+            //animator.SetTrigger("TakeOff");
+            animator.SetBool("isJumping", true);
+            Invoke("IdleJump", jumpWaitTime);
+            Invoke("jumpSound", jumpWaitTime);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
+        }
+
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
 
         coinText.text = coins.ToString();
@@ -203,16 +217,7 @@ public class PlayerController : MonoBehaviour
         // For movement..
         rb.velocity = new Vector2(xAxis * movementSpeed * Time.fixedDeltaTime, rb.velocity.y);
 
-        if(Input.GetKeyDown(KeyCode.Z) && isGrounded && xAxis == 0)
-        {
-            //animator.SetTrigger("TakeOff");
-            animator.SetBool("isJumping", true);
-            Invoke("IdleJump", jumpWaitTime);
-            Invoke("jumpSound", jumpWaitTime);
-        }else
-        {
-            animator.SetBool("isJumping", false);
-        }
+        
         //if(isGrounded)
         //{
         //    animator.SetBool("isJumping", false);
@@ -221,16 +226,16 @@ public class PlayerController : MonoBehaviour
         //    animator.SetBool("isJumping", true);
         //}
 
-        if(Input.GetKeyDown(KeyCode.Z) && isGrounded && xAxis != 0)
-        {
-            RunningJump();
-            animator.SetBool("isRunningJumping", true);
-            FindObjectOfType<AudioManager>().Play("Jump");
-        }
-        else if(isGrounded)
-        {
-            animator.SetBool("isRunningJumping", false);
-        }
+        //if(Input.GetKeyDown(KeyCode.Z) && isGrounded && xAxis != 0)
+        //{
+        //    RunningJump();
+        //    animator.SetBool("isRunningJumping", true);
+        //    FindObjectOfType<AudioManager>().Play("Jump");
+        //}
+        //else if(isGrounded)
+        //{
+        //    animator.SetBool("isRunningJumping", false);
+        //}
 
         if(Input.GetKeyDown(KeyCode.Z))
         {
