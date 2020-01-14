@@ -20,6 +20,7 @@ TagManager:
   - Teacher
   - NPC4
   - Worm
+  - Bullet
   layers:
   - Default
   - TransparentFX

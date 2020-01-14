@@ -112,6 +112,23 @@ public class Hog : MonoBehaviour
     //    transform.gameObject.SetActive(true);
     //}
 
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Bullet"))
+        {
+            StartCoroutine(Stop());
+        }
+    }
+
+    IEnumerator Stop()
+    {
+        movementSpeed = 0;
+        yield return new WaitForSeconds(5f);
+        movementSpeed = 0.5f;
+    }
+
     private void Flip()
     {
         Vector2 faceDirection = transform.localScale;

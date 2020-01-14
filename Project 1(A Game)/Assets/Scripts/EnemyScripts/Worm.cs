@@ -8,13 +8,26 @@ public class Worm : MonoBehaviour
     //[SerializeField] float timeBtwUp;
 
     Animator animator;
+    BoxCollider2D bx;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        bx = GetComponent<BoxCollider2D>();
         //timer = timeBtwUp;
 
         StartCoroutine(anim());
+    }
+
+    private void Update()
+    {
+        if(animator.GetBool("isUp") == true)
+        {
+            bx.enabled = true;
+        }else if(animator.GetBool("isUp") == false)
+        {
+            bx.enabled = false;
+        } 
     }
 
     IEnumerator anim()

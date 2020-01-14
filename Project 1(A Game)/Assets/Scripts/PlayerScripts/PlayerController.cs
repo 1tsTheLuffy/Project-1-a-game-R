@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI healthText;
 
     [Header("Vector")]
     [SerializeField] Vector2 wallJumpDirection;
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
 
         sideWallJumpDirection.Normalize();
         coinText.text = coins.ToString();
+        healthText.text = health.ToString();
     }
 
     private void Update()
@@ -193,6 +195,7 @@ public class PlayerController : MonoBehaviour
         CameraShake(); // we are calling camera Shake function every frame but setting its value only when triggered.
 
         coinText.text = coins.ToString();
+        healthText.text = health.ToString();
     }
 
     private void FixedUpdate()
