@@ -19,6 +19,7 @@ TagManager:
   - Grandma
   - Teacher
   - NPC4
+  - Worm
   layers:
   - Default
   - TransparentFX

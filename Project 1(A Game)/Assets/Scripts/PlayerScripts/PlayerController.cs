@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float recoilForce;
     [Range(0,200f)]
     [SerializeField] float rayDistance;
+    [SerializeField] float hogHitForce;
 
     public int coins = 0;
     public int health = 10;
@@ -241,13 +242,18 @@ public class PlayerController : MonoBehaviour
 
         if(health <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         if(transform.position.y <= -25f)
         {
             health = 0;
         }
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.LoadScene("ResumeScene");
     }
 
     //For Fall Damage..//
@@ -261,6 +267,23 @@ public class PlayerController : MonoBehaviour
             {
                 health--;
             }
+        }
+        if(collision.collider.transform.CompareTag("Hog"))
+        {
+            if(isRight)
+            {
+                Vector2 addForce = new Vector2(2 * hogHitForce, 2 * hogHitForce);
+                rb.AddForce(addForce);
+            }else if(!isRight)
+            {
+                Vector2 addForce = new Vector2(-2 * hogHitForce, 2 * hogHitForce);
+                rb.AddForce(addForce);
+            }
+            health--;
+        }
+        if(collision.collider.transform.CompareTag("Worm"))
+        {
+            health -= 1;
         }
     }
 
