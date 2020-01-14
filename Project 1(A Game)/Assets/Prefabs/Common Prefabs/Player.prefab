@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 2802328392837440566}
   - component: {fileID: 8033110574834842096}
   - component: {fileID: 6854542140598892299}
+  - component: {fileID: 6016719750462131200}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -364,7 +365,7 @@ MonoBehaviour:
   jumpForce: 800
   wallJumpForce: 450
   sideWallJumpForce: 40
-  jumpWaitTime: 0.18
+  jumpWaitTime: 0
   wallSlidingForce: 4
   timer: 1
   timeBtwShoot: 1
@@ -439,12 +440,14 @@ MonoBehaviour:
   minDistance: 1
   GrandpaPos: {fileID: 0}
   Doctor: {fileID: 0}
+  NPC2: {fileID: 0}
   pressImage: {fileID: 925005830}
   playGameButton: {fileID: 0}
   dialougeTrigger:
   - {fileID: 2954440910831371892}
   - {fileID: 8033110574834842096}
   - {fileID: 6854542140598892299}
+  - {fileID: 6016719750462131200}
   dm: {fileID: 0}
 --- !u!114 &8033110574834842096
 MonoBehaviour:
@@ -489,6 +492,24 @@ MonoBehaviour:
     - 'Doctor : So, as you know you have to play the game now and beat my score.'
     - 'Seb : I will.'
     - 'Seb : Ok Then let''s start.'
+--- !u!114 &6016719750462131200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954440911062363425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5262fc95f66a7514a8daf2acff7411fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialouge:
+    sentences:
+    - 'Grandma : Going to college, Seb?'
+    - 'Seb : Nope.'
+    - 'Grandma : So,  Where are you going? This early.'
+    - 'Seb : I will tell You when I come back.'
 --- !u!1 &3283099086883499446
 GameObject:
   m_ObjectHideFlags: 0

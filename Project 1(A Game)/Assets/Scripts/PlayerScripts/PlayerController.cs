@@ -201,17 +201,21 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Z) && isGrounded && xAxis == 0)
         {
-            animator.SetTrigger("TakeOff");
+            //animator.SetTrigger("TakeOff");
+            animator.SetBool("isJumping", true);
             Invoke("IdleJump", jumpWaitTime);
             Invoke("jumpSound", jumpWaitTime);
-        }
-        if(isGrounded)
-        {
-            animator.SetBool("isJumping", false);
         }else
         {
-            animator.SetBool("isJumping", true);
+            animator.SetBool("isJumping", false);
         }
+        //if(isGrounded)
+        //{
+        //    animator.SetBool("isJumping", false);
+        //}else
+        //{
+        //    animator.SetBool("isJumping", true);
+        //}
 
         if(Input.GetKeyDown(KeyCode.Z) && isGrounded && xAxis != 0)
         {

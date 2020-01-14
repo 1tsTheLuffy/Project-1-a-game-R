@@ -9,6 +9,7 @@ public class PlayerDialougeTrigger : MonoBehaviour
 
     [SerializeField] Transform GrandpaPos;
     [SerializeField] Transform Doctor;
+    [SerializeField] Transform NPC2;
 
     [SerializeField] GameObject pressImage;
     [SerializeField] GameObject playGameButton;
@@ -24,6 +25,7 @@ public class PlayerDialougeTrigger : MonoBehaviour
         GrandpaPos = GameObject.FindGameObjectWithTag("Grandpa").transform;
         Doctor = GameObject.FindGameObjectWithTag("Doctor").transform;
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        NPC2 = GameObject.FindGameObjectWithTag("Grandma").transform;
 
        // dialougeTrigger[0].Trigger();
         pressImage.SetActive(false);
@@ -34,6 +36,7 @@ public class PlayerDialougeTrigger : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, GrandpaPos.position);
         float distanceFromDoctor = Vector2.Distance(transform.position, Doctor.position);
+        float distanceFromNPC2 = Vector2.Distance(transform.position, NPC2.position);
 
         //* Converstaion With Grandpa./
         if(distance <= 1 && dm.animator.GetBool("IsOpen") == false)
@@ -81,6 +84,25 @@ public class PlayerDialougeTrigger : MonoBehaviour
         if(distanceFromDoctor < 4f && dm.animator.GetBool("IsOpen") == true && Player.coins == 20)
         {
             playGameButton.SetActive(true);
+        }
+        //*
+
+        //* Conversation with Grandma.
+        if(distanceFromNPC2 < 1f && Input.GetKeyDown(KeyCode.E) && dm.animator.GetBool("IsOpen") == false)
+        {
+            dialougeTrigger[3].Trigger();
+        }
+
+        if (distanceFromNPC2 < 20f)
+        {
+            if (distanceFromNPC2 <= 1f && dm.animator.GetBool("IsOpen") == false)
+            {
+                pressImage.SetActive(true);
+            }
+            else if (distanceFromNPC2 > 1f)
+            {
+                pressImage.SetActive(false);
+            }
         }
         //*
     }
