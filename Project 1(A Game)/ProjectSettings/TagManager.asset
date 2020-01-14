@@ -17,6 +17,8 @@ TagManager:
   - AudioManager
   - Doctor
   - Grandma
+  - Teacher
+  - NPC4
   layers:
   - Default
   - TransparentFX

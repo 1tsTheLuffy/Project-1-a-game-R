@@ -213,6 +213,8 @@ GameObject:
   - component: {fileID: 8033110574834842096}
   - component: {fileID: 6854542140598892299}
   - component: {fileID: 6016719750462131200}
+  - component: {fileID: 7947150186753536574}
+  - component: {fileID: 3356688897521143664}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -441,6 +443,7 @@ MonoBehaviour:
   GrandpaPos: {fileID: 0}
   Doctor: {fileID: 0}
   NPC2: {fileID: 0}
+  NPC3: {fileID: 0}
   pressImage: {fileID: 925005830}
   playGameButton: {fileID: 0}
   dialougeTrigger:
@@ -448,6 +451,8 @@ MonoBehaviour:
   - {fileID: 8033110574834842096}
   - {fileID: 6854542140598892299}
   - {fileID: 6016719750462131200}
+  - {fileID: 7947150186753536574}
+  - {fileID: 3356688897521143664}
   dm: {fileID: 0}
 --- !u!114 &8033110574834842096
 MonoBehaviour:
@@ -510,6 +515,50 @@ MonoBehaviour:
     - 'Seb : Nope.'
     - 'Grandma : So,  Where are you going? This early.'
     - 'Seb : I will tell You when I come back.'
+--- !u!114 &7947150186753536574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954440911062363425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5262fc95f66a7514a8daf2acff7411fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialouge:
+    sentences:
+    - 'Teacher : Why didn,t you come to school yesterday?'
+    - 'Seb : I was wwatching my favourite T.V Program. '
+    - 'Teacher : Idiot.'
+    - 'Teacher : Where are you goin now?'
+    - 'seb : secret.'
+    - 'Seb : I will tell you tomorrow as an excuse.'
+    - 'Teacher : Fool.'
+--- !u!114 &3356688897521143664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954440911062363425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5262fc95f66a7514a8daf2acff7411fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialouge:
+    sentences:
+    - "Seb : Hi,  uncle ned.\t\t"
+    - 'Seb : What are you buying this early?'
+    - 'Uncle Ned : Just some booze.'
+    - 'Seb : You should stop drinking.'
+    - 'Uncle Ned : heard your old man is sick again. '
+    - 'uncle Ned : I have some great medicine and I can give it to you.'
+    - 'Seb : Really? Where?'
+    - 'Uncle Ned : Right here in my hand.'
+    - 'Seb : You stupid fool.'
 --- !u!1 &3283099086883499446
 GameObject:
   m_ObjectHideFlags: 0
