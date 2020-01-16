@@ -5,6 +5,8 @@ using Cinemachine;
 
 public class MainPlayer : MonoBehaviour
 {
+    public int health;
+
     private Vector2 mousePos;
 
     [SerializeField] float elapsedTime;
@@ -52,6 +54,11 @@ public class MainPlayer : MonoBehaviour
             elapsedTime = shakeDuration;
         }
 
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         Shake();
     }
 
@@ -59,6 +66,16 @@ public class MainPlayer : MonoBehaviour
     {
         
         transform.position = mousePos;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("RedEnemy"))
+        {
+            health -= 1;
+            elapsedTime = shakeDuration;
+            Destroy(collision.transform.gameObject);
+        }
     }
 
     void Shake()

@@ -21,6 +21,9 @@ TagManager:
   - NPC4
   - Worm
   - Bullet
+  - SpaceShip
+  - RedEnemy
+  - NewBulletTag
   layers:
   - Default
   - TransparentFX
