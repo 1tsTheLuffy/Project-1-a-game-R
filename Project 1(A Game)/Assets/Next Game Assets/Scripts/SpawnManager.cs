@@ -5,6 +5,9 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     private int index;
+
+    [SerializeField] float delayTime;
+    [SerializeField] int i, j;
     
     [SerializeField] GameObject Enemy;
 
@@ -23,8 +26,8 @@ public class SpawnManager : MonoBehaviour
         {
             Instantiate(Enemy, spawnPoints[index].position, Quaternion.identity);
             index = Random.Range(0, spawnPoints.Length);
-
-            yield return new WaitForSeconds(5f);
+            delayTime = Random.Range(i, j);
+            yield return new WaitForSeconds(delayTime);
         }
     }
 }

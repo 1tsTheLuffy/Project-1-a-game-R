@@ -13,10 +13,19 @@ public class BoxEnemy : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
+
+        if(Player == null)
+        {
+            return;
+        }
     }
 
     private void Update()
     {
+        if(Player == null)
+        {
+            return;
+        }
         if(Vector2.Distance(transform.position, Player.position) > minDistance)
         {
             transform.position = Vector2.MoveTowards(transform.position, Player.position, speed * Time.deltaTime);
@@ -25,6 +34,14 @@ public class BoxEnemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("NewBulletTag"))
+        {
+            health -= 1;
         }
     }
 }

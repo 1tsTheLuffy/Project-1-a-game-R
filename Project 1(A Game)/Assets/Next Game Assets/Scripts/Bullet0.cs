@@ -22,4 +22,12 @@ public class Bullet0 : MonoBehaviour
     {
         transform.Translate(Vector2.up * speed * Time.fixedDeltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("RedEnemy") || collision.CompareTag("BlueSquareEnemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

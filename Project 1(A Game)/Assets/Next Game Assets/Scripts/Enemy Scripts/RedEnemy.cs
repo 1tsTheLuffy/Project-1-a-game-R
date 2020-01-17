@@ -8,11 +8,17 @@ public class RedEnemy : MonoBehaviour
     [SerializeField] float minDistance;
     [SerializeField] float speed;
 
+    [SerializeField] GameObject yellowCircleEnemy;
+
     [SerializeField] Transform Player;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
+        if(Player == null)
+        {
+            return;
+        }
     }
 
     private void Update()
@@ -38,4 +44,5 @@ public class RedEnemy : MonoBehaviour
             health -= 1;
         }
     }
+
 }

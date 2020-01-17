@@ -15,6 +15,8 @@ public class MainPlayer : MonoBehaviour
     [SerializeField] float shakeAmplitude;
 
     [SerializeField] GameObject[] bullet;
+    [SerializeField] GameObject particlePrefab;
+    [SerializeField] GameObject[] Managers;
 
     [SerializeField] Transform[] gunPoint;
 
@@ -46,11 +48,13 @@ public class MainPlayer : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(bullet[0], gunPoint[0].position, gunPoint[0].rotation);
+            Instantiate(particlePrefab, gunPoint[0].position, gunPoint[0].rotation);
             elapsedTime = shakeDuration;
         }
         else if(Input.GetMouseButtonDown(1))
         {
             Instantiate(bullet[1], gunPoint[1].position, gunPoint[1].rotation);
+            Instantiate(particlePrefab, gunPoint[1].position, gunPoint[1].rotation);
             elapsedTime = shakeDuration;
         }
 
@@ -72,8 +76,13 @@ public class MainPlayer : MonoBehaviour
     {
         if(collision.CompareTag("RedEnemy"))
         {
-            health -= 1;
+            health -= 2;
             elapsedTime = shakeDuration;
+            Destroy(collision.transform.gameObject);
+        }
+        if(collision.CompareTag("YellowCircleEnemy"))
+        {
+            health -= 1;
             Destroy(collision.transform.gameObject);
         }
     }
@@ -91,6 +100,14 @@ public class MainPlayer : MonoBehaviour
             elapsedTime = 0;
             virtualNoiseCamera.m_FrequencyGain = 0;
             virtualNoiseCamera.m_AmplitudeGain = 0;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < Managers.Length; i++)
+        {
+            Managers[i].SetActive(false);
         }
     }
 }
