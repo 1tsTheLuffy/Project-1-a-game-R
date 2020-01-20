@@ -139,40 +139,40 @@ public class PlayerController : MonoBehaviour
         Destroy(instance, slidingParticleDestroyTime);
 
         // For Shooting..
-        if(Input.GetKeyDown(KeyCode.X) && xAxis == 0 && timer <= 0 && !isOnWall)
-        {
-            animator.SetBool("isShooting", true);
-            RecoilForce();
-            elapsedTime = shakeDuration;
-            Shoot();
-            //rb.AddForce(Vector3.left * recoilForce*recoilForce, ForceMode2D.Impulse);
-            timer = timeBtwShoot;
+        //if(Input.GetKeyDown(KeyCode.X) && xAxis == 0 && timer <= 0 && !isOnWall)
+        //{
+        //    animator.SetBool("isShooting", true);
+        //    RecoilForce();
+        //    elapsedTime = shakeDuration;
+        //    Shoot();
+        //    //rb.AddForce(Vector3.left * recoilForce*recoilForce, ForceMode2D.Impulse);
+        //    timer = timeBtwShoot;
             
-        }else
-        {
-            timer -= Time.deltaTime;
-        }
-        if(Input.GetKeyUp(KeyCode.X) && xAxis == 0)
-        {
-            animator.SetBool("isShooting", false);
-        }
+        //}else
+        //{
+        //    timer -= Time.deltaTime;
+        //}
+        //if(Input.GetKeyUp(KeyCode.X) && xAxis == 0)
+        //{
+        //    animator.SetBool("isShooting", false);
+        //}
 
         // For running and shooting..
-        if(Input.GetKeyDown(KeyCode.X) && xAxis != 0 && timer <= 0)
-        {
-            animator.SetBool("isRunningShooting", true);
-            RecoilForce();
-            elapsedTime = shakeDuration;
-            Shoot();
-            timer = timeBtwShoot;
-        }else
-        {
-            timer -= Time.deltaTime;
-        }
-        if(Input.GetKeyUp(KeyCode.X) && xAxis != 0)
-        {
-            animator.SetBool("isRunningShooting", false);
-        }
+        //if(Input.GetKeyDown(KeyCode.X) && xAxis != 0 && timer <= 0)
+        //{
+        //    animator.SetBool("isRunningShooting", true);
+        //    RecoilForce();
+        //    elapsedTime = shakeDuration;
+        //    Shoot();
+        //    timer = timeBtwShoot;
+        //}else
+        //{
+        //    timer -= Time.deltaTime;
+        //}
+        //if(Input.GetKeyUp(KeyCode.X) && xAxis != 0)
+        //{
+        //    animator.SetBool("isRunningShooting", false);
+        //}
 
         if(Input.GetKeyDown(KeyCode.Tab))
         {
