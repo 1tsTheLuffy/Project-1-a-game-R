@@ -7,12 +7,18 @@ public class BoxEnemy : MonoBehaviour
     public int health;
     [SerializeField] float minDistance;
     [SerializeField] float speed;
+    [SerializeField] float timer;
+    [SerializeField] float timeBetweenShoot;
+
+    [SerializeField] GameObject bullet;
 
     private Transform Player;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
+
+        timer = timeBetweenShoot;
 
         if(Player == null)
         {
@@ -31,7 +37,19 @@ public class BoxEnemy : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, Player.position, speed * Time.deltaTime);
         }
 
-        if(health <= 0)
+        transform.RotateAround(Player.position, Vector3.forward, -50 * Time.deltaTime);
+
+        if (timer <= 0)
+        {
+            Instantiate(bullet, transform.position, Quaternion.identity);
+            timer = timeBetweenShoot;
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (health <= 0)
         {
             Destroy(gameObject);
         }

@@ -28,4 +28,12 @@ public class YellowCircleEnemy : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, Player.position, speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("NewBulletTag"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

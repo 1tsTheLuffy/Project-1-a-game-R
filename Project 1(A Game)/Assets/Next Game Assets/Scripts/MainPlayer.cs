@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class MainPlayer : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class MainPlayer : MonoBehaviour
     [SerializeField] float shakeFrequency;
     [SerializeField] float shakeAmplitude;
 
+    [SerializeField] TextMeshProUGUI healthText;
+
     [SerializeField] GameObject[] bullet;
     [SerializeField] GameObject particlePrefab;
     [SerializeField] GameObject[] Managers;
@@ -24,12 +27,14 @@ public class MainPlayer : MonoBehaviour
     [SerializeField] CinemachineBasicMultiChannelPerlin virtualNoiseCamera;
 
     Rigidbody2D rb;
+    Animator animator;
     SpriteRenderer sr;
     Camera cam;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         cam = Camera.main;
 
@@ -37,6 +42,8 @@ public class MainPlayer : MonoBehaviour
         {
             virtualNoiseCamera = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineBasicMultiChannelPerlin>();
         }
+
+        healthText.text = health.ToString();
     }
 
     private void Update()
@@ -58,7 +65,16 @@ public class MainPlayer : MonoBehaviour
             elapsedTime = shakeDuration;
         }
 
-        if(health <= 0)
+        healthText.text = health.ToString();
+        
+        if(health <= 10 && health > 5)
+        {
+            healthText.color = Color.yellow;
+        }else if(health < 5)
+        {
+            healthText.color = Color.red;
+        }
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
@@ -78,13 +94,28 @@ public class MainPlayer : MonoBehaviour
         {
             health -= 2;
             elapsedTime = shakeDuration;
+            StartCoroutine(Damage());
             Destroy(collision.transform.gameObject);
         }
         if(collision.CompareTag("YellowCircleEnemy"))
         {
             health -= 1;
+            StartCoroutine(Damage());
+            elapsedTime = shakeDuration;
             Destroy(collision.transform.gameObject);
         }
+        if(collision.CompareTag("BlueBullet"))
+        {
+            health -= 1;
+            elapsedTime = shakeDuration;
+        }
+    }
+
+    IEnumerator Damage()
+    {
+        animator.SetBool("Hit", true);
+        yield return new WaitForSeconds(.1f);
+        animator.SetBool("Hit", false);
     }
 
     void Shake()
