@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class YellowCircleEnemy : MonoBehaviour
 {
+    private int i;
     [SerializeField] float speed;
+
+    [SerializeField] GameObject Health;
 
     MainPlayer mp;
 
@@ -12,6 +15,7 @@ public class YellowCircleEnemy : MonoBehaviour
 
     private void Start()
     {
+        i = Random.Range(1, 4);
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
         mp = GameObject.FindGameObjectWithTag("SpaceShip").GetComponent<MainPlayer>();
 
@@ -37,6 +41,11 @@ public class YellowCircleEnemy : MonoBehaviour
         if(collision.CompareTag("NewBulletTag"))
         {
             Destroy(gameObject);
+
+            if (i == 2)
+            {
+                Instantiate(Health, transform.position, Quaternion.identity);
+            }
         }
     }
 

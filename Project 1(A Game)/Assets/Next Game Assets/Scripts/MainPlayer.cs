@@ -124,6 +124,11 @@ public class MainPlayer : MonoBehaviour
             Destroy(collision.transform.gameObject);
             health += 5;
         }
+
+        if(score == 20)
+        {
+            Debug.Log("You Win!!");
+        }
     }
 
     IEnumerator Damage()

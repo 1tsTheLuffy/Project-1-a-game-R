@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4.5
+  Health: {fileID: 1039181811977045250, guid: cb7f8f970e962144182c87431f380e5d, type: 3}
   Player: {fileID: 0}
 --- !u!50 &694178020804132123
 Rigidbody2D:
