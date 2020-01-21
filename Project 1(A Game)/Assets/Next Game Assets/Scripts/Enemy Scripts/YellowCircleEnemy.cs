@@ -6,13 +6,16 @@ public class YellowCircleEnemy : MonoBehaviour
 {
     [SerializeField] float speed;
 
+    MainPlayer mp;
+
     [SerializeField] Transform Player;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
+        mp = GameObject.FindGameObjectWithTag("SpaceShip").GetComponent<MainPlayer>();
 
-        if(Player == null)
+        if (Player == null)
         {
             return;
         }
@@ -35,5 +38,10 @@ public class YellowCircleEnemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        mp.score++;
     }
 }

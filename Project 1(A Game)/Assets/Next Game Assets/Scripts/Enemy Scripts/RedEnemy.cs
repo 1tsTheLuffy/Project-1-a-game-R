@@ -9,12 +9,15 @@ public class RedEnemy : MonoBehaviour
     [SerializeField] float speed;
 
     [SerializeField] GameObject yellowCircleEnemy;
+    MainPlayer mp;
 
     [SerializeField] Transform Player;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
+        mp = GameObject.FindGameObjectWithTag("SpaceShip").GetComponent<MainPlayer>();
+
         if(Player == null)
         {
             return;
@@ -34,6 +37,7 @@ public class RedEnemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            mp.score++;
         }
     }
 
@@ -44,5 +48,4 @@ public class RedEnemy : MonoBehaviour
             health -= 1;
         }
     }
-
 }

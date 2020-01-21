@@ -12,11 +12,14 @@ public class BoxEnemy : MonoBehaviour
 
     [SerializeField] GameObject bullet;
 
+    MainPlayer mp;
+
     private Transform Player;
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("SpaceShip").transform;
+        mp = GameObject.FindGameObjectWithTag("SpaceShip").GetComponent<MainPlayer>();
 
         timer = timeBetweenShoot;
 
@@ -52,6 +55,7 @@ public class BoxEnemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            mp.score++;
         }
     }
 

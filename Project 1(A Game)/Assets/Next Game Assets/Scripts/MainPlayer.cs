@@ -15,7 +15,10 @@ public class MainPlayer : MonoBehaviour
     [SerializeField] float shakeFrequency;
     [SerializeField] float shakeAmplitude;
 
+    public int score = 0;
+
     [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     [SerializeField] GameObject[] bullet;
     [SerializeField] GameObject particlePrefab;
@@ -44,6 +47,7 @@ public class MainPlayer : MonoBehaviour
         }
 
         healthText.text = health.ToString();
+        scoreText.text = score.ToString();
     }
 
     private void Update()
@@ -78,7 +82,12 @@ public class MainPlayer : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(health > 20)
+        {
+            health = 20;
+        }
 
+        scoreText.text = score.ToString();
         Shake();
     }
 
@@ -108,6 +117,12 @@ public class MainPlayer : MonoBehaviour
         {
             health -= 1;
             elapsedTime = shakeDuration;
+        }
+
+        if (collision.CompareTag("Health"))
+        {
+            Destroy(collision.transform.gameObject);
+            health += 5;
         }
     }
 

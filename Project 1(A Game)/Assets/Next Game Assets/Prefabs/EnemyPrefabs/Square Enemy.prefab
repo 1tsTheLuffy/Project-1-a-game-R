@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 6365127563022504264}
   m_Layer: 0
   m_Name: Square Enemy
-  m_TagString: Untagged
+  m_TagString: BlueSquareEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,10 +167,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   minDistance: 2
-  speed: 2
-  timer: 0.4
-  timeBetweenShoot: 0.4
-  bullet: {fileID: 5704285476289602073, guid: 9fe86eab142b88f4faf5f1b64aa620c7, type: 3}
+  speed: 2.5
+  timer: 1
+  timeBetweenShoot: 1
+  bullet: {fileID: 4471664621952088622, guid: 137a13c256e256e4a87c95cfbf46277e, type: 3}
 --- !u!61 &6365127563022504264
 BoxCollider2D:
   m_ObjectHideFlags: 0

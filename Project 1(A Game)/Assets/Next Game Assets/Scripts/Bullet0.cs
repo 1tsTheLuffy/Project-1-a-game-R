@@ -6,11 +6,15 @@ public class Bullet0 : MonoBehaviour
 {
     [SerializeField] float speed;
 
+    MainPlayer mp;
+
     Rigidbody2D rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        mp = GameObject.FindGameObjectWithTag("SpaceShip").GetComponent<MainPlayer>();
     }
 
     private void Update()
@@ -25,9 +29,17 @@ public class Bullet0 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("RedEnemy") || collision.CompareTag("BlueSquareEnemy"))
+        if(collision.CompareTag("RedEnemy") || collision.CompareTag("BlueSquareEnemy")
+            || collision.CompareTag("YellowCircleEnemy"))
         {
             Destroy(gameObject);
+        }
+
+        if(collision.CompareTag("Health"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.transform.gameObject);
+            mp.health += 5;
         }
     }
 }
