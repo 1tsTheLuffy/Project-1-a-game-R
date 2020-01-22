@@ -20,9 +20,11 @@ public class MainPlayer : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    private GameObject temp;
     [SerializeField] GameObject[] bullet;
     [SerializeField] GameObject particlePrefab;
     [SerializeField] GameObject[] Managers;
+    [SerializeField] GameObject destroyParticle;
 
     [SerializeField] Transform[] gunPoint;
 
@@ -82,6 +84,7 @@ public class MainPlayer : MonoBehaviour
         }
         if (health <= 0)
         {
+            temp = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         if(health > 20)
@@ -137,6 +140,7 @@ public class MainPlayer : MonoBehaviour
 
         if(collision.CompareTag("Border"))
         {
+            temp = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
