@@ -44,6 +44,7 @@ public class YellowCircleEnemy : MonoBehaviour
         {
             Destroy(gameObject);
             mp.score++;
+            FindObjectOfType<AudioManager>().Play("YellowEnemyExplosion");
             tempObject = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             if (i == 2)
             {

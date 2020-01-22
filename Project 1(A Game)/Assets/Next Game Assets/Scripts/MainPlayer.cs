@@ -59,12 +59,14 @@ public class MainPlayer : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             Instantiate(bullet[0], gunPoint[0].position, gunPoint[0].rotation);
+            FindObjectOfType<AudioManager>().Play("Shoot");
             Instantiate(particlePrefab, gunPoint[0].position, gunPoint[0].rotation);
             elapsedTime = shakeDuration;
         }
         else if(Input.GetMouseButtonDown(1))
         {
             Instantiate(bullet[1], gunPoint[1].position, gunPoint[1].rotation);
+            FindObjectOfType<AudioManager>().Play("Shoot");
             Instantiate(particlePrefab, gunPoint[1].position, gunPoint[1].rotation);
             elapsedTime = shakeDuration;
         }
@@ -107,12 +109,14 @@ public class MainPlayer : MonoBehaviour
         {
             health -= 2;
             elapsedTime = shakeDuration;
+            FindObjectOfType<AudioManager>().Play("Hit");
             StartCoroutine(Damage());
             Destroy(collision.transform.gameObject);
         }
         if(collision.CompareTag("YellowCircleEnemy"))
         {
             health -= 1;
+            FindObjectOfType<AudioManager>().Play("Hit");
             StartCoroutine(Damage());
             elapsedTime = shakeDuration;
             Destroy(collision.transform.gameObject);
@@ -120,18 +124,15 @@ public class MainPlayer : MonoBehaviour
         if(collision.CompareTag("BlueBullet"))
         {
             health -= 1;
+            FindObjectOfType<AudioManager>().Play("Hit");
             elapsedTime = shakeDuration;
         }
 
         if (collision.CompareTag("Health"))
         {
             Destroy(collision.transform.gameObject);
+            FindObjectOfType<AudioManager>().Play("Power");
             health += 5;
-        }
-
-        if(score == 20)
-        {
-            Debug.Log("You Win!!");
         }
     }
 

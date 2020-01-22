@@ -60,6 +60,7 @@ public class BoxEnemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            FindObjectOfType<AudioManager>().Play("BoxEnemyExplosion");
             d = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             mp.score++;
         }

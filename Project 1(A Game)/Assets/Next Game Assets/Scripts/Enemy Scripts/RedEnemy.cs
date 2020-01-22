@@ -40,6 +40,7 @@ public class RedEnemy : MonoBehaviour
         {
             Destroy(gameObject);
             tempObject = Instantiate(destroyParticle, transform.position, Quaternion.identity);
+            FindObjectOfType<AudioManager>().Play("CircleEnemyExplosion");
             mp.score++;
         }
 
