@@ -134,6 +134,11 @@ public class MainPlayer : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Power");
             health += 5;
         }
+
+        if(collision.CompareTag("Border"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator Damage()

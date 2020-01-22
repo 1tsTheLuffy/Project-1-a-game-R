@@ -28,6 +28,7 @@ TagManager:
   - YellowCircleEnemy
   - BlueBullet
   - Health
+  - Border
   layers:
   - Default
   - TransparentFX

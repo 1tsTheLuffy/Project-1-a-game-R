@@ -29,6 +29,9 @@ public class YellowCircleEnemy : MonoBehaviour
 
     private void Update()
     {
+
+        transform.Rotate(0f, 0f, 8f);
+
         if (Player == null)
         {
             return;
