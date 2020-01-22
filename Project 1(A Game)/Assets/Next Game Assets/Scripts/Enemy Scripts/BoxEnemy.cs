@@ -10,7 +10,9 @@ public class BoxEnemy : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] float timeBetweenShoot;
 
+    private GameObject d;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject destroyParticle;
 
     MainPlayer mp;
 
@@ -31,6 +33,9 @@ public class BoxEnemy : MonoBehaviour
 
     private void Update()
     {
+
+        transform.Rotate(0f, 0f, 2f);
+
         if(Player == null)
         {
             return;
@@ -55,8 +60,11 @@ public class BoxEnemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            d = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             mp.score++;
         }
+
+        Destroy(d, 2f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

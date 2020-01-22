@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] float waitTime;
+    [SerializeField] GameObject destroyParticle;
 
-    [SerializeField] GameObject particle;
-
-    private void Update()
+    private void OnDestroy()
     {
-        GameObject d = Instantiate(particle, transform.position, transform.rotation);
-        Destroy(d, waitTime);
+        destroyParticle = Instantiate(destroyParticle, transform.position, Quaternion.identity);
+        Destroy(destroyParticle, 2f);
     }
 }

@@ -8,6 +8,8 @@ public class YellowCircleEnemy : MonoBehaviour
     [SerializeField] float speed;
 
     [SerializeField] GameObject Health;
+    [SerializeField] GameObject destroyParticle;
+    private GameObject tempObject;
 
     MainPlayer mp;
 
@@ -41,7 +43,8 @@ public class YellowCircleEnemy : MonoBehaviour
         if(collision.CompareTag("NewBulletTag"))
         {
             Destroy(gameObject);
-
+            mp.score++;
+            tempObject = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             if (i == 2)
             {
                 Instantiate(Health, transform.position, Quaternion.identity);
@@ -51,6 +54,8 @@ public class YellowCircleEnemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        mp.score++;
+ 
+
+        Destroy(tempObject, 2f);
     }
 }

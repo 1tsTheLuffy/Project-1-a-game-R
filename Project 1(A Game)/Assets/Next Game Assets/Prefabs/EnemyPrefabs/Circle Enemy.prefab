@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: -90932401658741532}
   - component: {fileID: 6748228511220070396}
   - component: {fileID: 1039598118830012589}
+  - component: {fileID: -4111563743759748607}
   m_Layer: 0
   m_Name: Circle Enemy
   m_TagString: RedEnemy
@@ -171,6 +172,8 @@ MonoBehaviour:
   speed: 5
   yellowCircleEnemy: {fileID: 6235513072624741696, guid: f2ecec5ae1ff1dc45af3007088297d08,
     type: 3}
+  destroyParticle: {fileID: 4174776863443700278, guid: 4316c63c64fed9240a2b9c2c4b16b0d4,
+    type: 3}
   Player: {fileID: 0}
 --- !u!50 &6748228511220070396
 Rigidbody2D:
@@ -194,6 +197,22 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!58 &1039598118830012589
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5926129431431765833}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!58 &-4111563743759748607
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

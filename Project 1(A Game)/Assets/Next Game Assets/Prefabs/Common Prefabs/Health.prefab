@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4883736745434172067}
   - component: {fileID: 273887361177325878}
   - component: {fileID: 4949229341821483962}
+  - component: {fileID: -2182256587217358205}
   m_Layer: 0
   m_Name: Health
   m_TagString: Health
@@ -254,6 +255,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-2182256587217358205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039181811977045250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80003aad133e5ba40b2218e5282ebbee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyParticle: {fileID: 4174776863443700278, guid: 77ba0537a09ef894cb44338c7e173720,
+    type: 3}
 --- !u!1 &1039181812383022952
 GameObject:
   m_ObjectHideFlags: 0

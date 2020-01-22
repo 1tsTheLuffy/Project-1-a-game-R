@@ -8,7 +8,9 @@ public class RedEnemy : MonoBehaviour
     [SerializeField] float minDistance;
     [SerializeField] float speed;
 
+    private GameObject tempObject;
     [SerializeField] GameObject yellowCircleEnemy;
+    [SerializeField] GameObject destroyParticle;
     MainPlayer mp;
 
     [SerializeField] Transform Player;
@@ -37,8 +39,11 @@ public class RedEnemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            tempObject = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             mp.score++;
         }
+
+        Destroy(tempObject, 2f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
