@@ -77,17 +77,17 @@ public class PlayerDialougeTrigger : MonoBehaviour
             }
         }
 
-        if (distanceFromDoctor < 1f && Input.GetKeyDown(KeyCode.E) && dm.animator.GetBool("IsOpen") == false && Player.coins != 20)
+        if (distanceFromDoctor < 1f && Input.GetKeyDown(KeyCode.E) && dm.animator.GetBool("IsOpen") == false && Player.coins < 10)
         {
             dialougeTrigger[1].Trigger();
         }
 
-        if (distanceFromDoctor < 1f && Input.GetKeyDown(KeyCode.E) && dm.animator.GetBool("IsOpen") == false && Player.coins == 20)
+        if (distanceFromDoctor < 1f && Input.GetKeyDown(KeyCode.E) && dm.animator.GetBool("IsOpen") == false && Player.coins >= 10)
         {
             dialougeTrigger[2].Trigger();
         }
 
-        if(distanceFromDoctor < 4f && dm.animator.GetBool("IsOpen") == true && Player.coins == 20)
+        if(distanceFromDoctor < 4f && dm.animator.GetBool("IsOpen") == true && Player.coins >= 10)
         {
             playGameButton.SetActive(true);
         }
