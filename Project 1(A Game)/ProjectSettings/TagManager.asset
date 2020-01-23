@@ -29,6 +29,7 @@ TagManager:
   - BlueBullet
   - Health
   - Border
+  - LevelLoader
   layers:
   - Default
   - TransparentFX

@@ -37,6 +37,7 @@ public class MainPlayer : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer sr;
+    LevelLoader levelLoader;
     Camera cam;
 
     private void Start()
@@ -46,6 +47,7 @@ public class MainPlayer : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
         cam = Camera.main;
 
         if(virtualCamera != null)
@@ -96,11 +98,14 @@ public class MainPlayer : MonoBehaviour
         {
             temp = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             sr.enabled = false;
-            StartCoroutine(LoadLoseScene());
-           // Destroy(gameObject);
-        }else if(health <= 0 && (score > wizardScore))
+            levelLoader.LoadNextScene(06);
+            // StartCoroutine(LoadLoseScene());
+            // Destroy(gameObject);
+        }
+        else if(health <= 0 && (score > wizardScore))
         {
-            SceneManager.LoadScene(05);
+            levelLoader.LoadNextScene(05);
+            //SceneManager.LoadScene(05);
         }
         if(health > 20)
         {

@@ -378,6 +378,7 @@ MonoBehaviour:
   coins: 0
   health: 10
   coinText: {fileID: 0}
+  healthText: {fileID: 0}
   wallJumpDirection: {x: 2, y: 2}
   sideWallJumpDirection: {x: 2, y: 2}
   bullet: {fileID: 5367881800733578063, guid: a2d52b7b798505b4a86f266a25dc36ff, type: 3}
@@ -494,7 +495,7 @@ MonoBehaviour:
     - 'Doctor : Seb, your grandpa contacted yesterday.'
     - 'Seb : Did he?'
     - 'Doctor : I have the medicine ready.'
-    - 'Doctor : Ok. So give me 20 coins.'
+    - 'Doctor : Ok. So give me 10 coins.'
     - 'Seb : here take them.'
     - 'Doctor : So, as you know you have to play the game now and beat my score.'
     - 'Seb : I will.'

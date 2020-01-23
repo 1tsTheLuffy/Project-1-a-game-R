@@ -5,29 +5,42 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour
 {
+
+    public LevelLoader levelLoader;
+
+    private void Start()
+    {
+        levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
+    }
+
     public void LoadPlayScene()
     {
-        SceneManager.LoadScene(01);
+        levelLoader.LoadNextScene(01);
+       // SceneManager.LoadScene(01);
     }
 
     public void LoadMainMenuScene()
     {
-        SceneManager.LoadScene(0);
+        levelLoader.LoadNextScene(00);
+       // SceneManager.LoadScene(0);
     }
 
     public void LoadSceneFromCheckPoint()
     {
-        SceneManager.LoadScene(01);
+        levelLoader.LoadNextScene(01);
+        //SceneManager.LoadScene(01);
     }
 
     public void LoadNextGameTutorialScene()
     {
-        SceneManager.LoadScene(04);
+        levelLoader.LoadNextScene(04);
+       // SceneManager.LoadScene(04);
     }
 
     public void LoadNextGame()
     {
-        SceneManager.LoadScene(03);
+        levelLoader.LoadNextScene(03);
+       // SceneManager.LoadScene(03);
     }
 
     public void QuitApplication()

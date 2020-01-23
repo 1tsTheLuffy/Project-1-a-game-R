@@ -75,6 +75,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     DialougeManager dm;
+
+    LevelLoader levelLoader;
+
    // RaycastHit2D raycast;
     [SerializeField] GameManager gameManager;
     [SerializeField] Animator coinAnimator;
@@ -85,6 +88,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         dm = GameObject.FindGameObjectWithTag("DialougeManager").GetComponent<DialougeManager>();
+        levelLoader = GameObject.FindGameObjectWithTag("LevelLoader").GetComponent<LevelLoader>();
         transform.position = gameManager.lastCheckPointPosition;
 
         if(virtaulCamera != null)
@@ -246,7 +250,9 @@ public class PlayerController : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
-            SceneManager.LoadScene("ResumeScene");
+            animator.SetTrigger("End");
+            levelLoader.LoadNextScene(02);
+           // SceneManager.LoadScene("ResumeScene");
         }
 
         if(transform.position.y <= -25f)
