@@ -7,6 +7,7 @@ using TMPro;
 public class MainPlayer : MonoBehaviour
 {
     public int health;
+    public int wizardScore;
 
     private Vector2 mousePos;
 
@@ -19,6 +20,7 @@ public class MainPlayer : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI wizardScoreText;
 
     private GameObject temp;
     [SerializeField] GameObject[] bullet;
@@ -38,6 +40,8 @@ public class MainPlayer : MonoBehaviour
 
     private void Start()
     {
+        wizardScore = Random.Range(150, 300);
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
@@ -50,6 +54,7 @@ public class MainPlayer : MonoBehaviour
 
         healthText.text = health.ToString();
         scoreText.text = score.ToString();
+        wizardScoreText.text = wizardScore.ToString();
     }
 
     private void Update()
@@ -98,6 +103,11 @@ public class MainPlayer : MonoBehaviour
 
         scoreText.text = score.ToString();
         Shake();
+
+        if(score > wizardScore)
+        {
+            Debug.Log("You Win!!");
+        }
     }
 
     private void OnMouseDrag()
