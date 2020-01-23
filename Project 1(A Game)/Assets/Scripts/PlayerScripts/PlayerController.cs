@@ -174,11 +174,6 @@ public class PlayerController : MonoBehaviour
         //    animator.SetBool("isRunningShooting", false);
         //}
 
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            SceneManager.LoadScene(0);
-        }
-
         // Doing this because is both are true then the player will do a double jump..
         if(isGrounded && isOnWall)
         {
@@ -251,17 +246,13 @@ public class PlayerController : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("ResumeScene");
         }
 
         if(transform.position.y <= -25f)
         {
             health = 0;
         }
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.LoadScene("ResumeScene");
     }
 
     //For Fall Damage..//
@@ -273,6 +264,7 @@ public class PlayerController : MonoBehaviour
         {
             if(collision.relativeVelocity.y > 25f)
             {
+                elapsedTime = shakeDuration;
                 health--;
             }
         }
@@ -303,7 +295,7 @@ public class PlayerController : MonoBehaviour
     //    }
     //}
 
-    private void  jumpSound() // For involing jump sound when we do an idle jump..
+    private void  jumpSound() // For invoking jump sound when we do an idle jump..
     {
         FindObjectOfType<AudioManager>().Play("Jump");
     }

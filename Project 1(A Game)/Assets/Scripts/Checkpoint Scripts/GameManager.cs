@@ -21,8 +21,4 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void loadNextScene()
-    {
-        SceneManager.LoadScene(01);
-    }
 }
