@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -8675,6 +8675,11 @@ PrefabInstance:
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 822277107}
+    - target: {fileID: 7795457142141366315, guid: 4b09b91de8f51f242aa2b444b6614fa7,
+        type: 3}
+      propertyPath: wizardScoreText
+      value: 
+      objectReference: {fileID: 593537355}
     - target: {fileID: 7795457142141366317, guid: 4b09b91de8f51f242aa2b444b6614fa7,
         type: 3}
       propertyPath: m_Name

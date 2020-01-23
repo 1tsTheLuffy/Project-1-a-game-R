@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainPlayer : MonoBehaviour
 {
@@ -40,7 +41,7 @@ public class MainPlayer : MonoBehaviour
 
     private void Start()
     {
-        wizardScore = Random.Range(150, 300);
+        wizardScore = Random.Range(50, 100);
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -87,10 +88,19 @@ public class MainPlayer : MonoBehaviour
         {
             healthText.color = Color.red;
         }
-        if (health <= 0)
+
+        // Health Related Stuff..
+        //*
+
+        if (health <= 0 && (score < wizardScore))
         {
             temp = Instantiate(destroyParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            sr.enabled = false;
+            StartCoroutine(LoadLoseScene());
+           // Destroy(gameObject);
+        }else if(health <= 0 && (score > wizardScore))
+        {
+            SceneManager.LoadScene(05);
         }
         if(health > 20)
         {
@@ -101,13 +111,11 @@ public class MainPlayer : MonoBehaviour
             health = 0;
         }
 
+        //
+        //*
         scoreText.text = score.ToString();
         Shake();
 
-        if(score > wizardScore)
-        {
-            Debug.Log("You Win!!");
-        }
     }
 
     private void OnMouseDrag()
@@ -151,7 +159,7 @@ public class MainPlayer : MonoBehaviour
         if(collision.CompareTag("Border"))
         {
             temp = Instantiate(destroyParticle, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            health = 0;
         }
     }
 
@@ -160,6 +168,13 @@ public class MainPlayer : MonoBehaviour
         animator.SetBool("Hit", true);
         yield return new WaitForSeconds(.1f);
         animator.SetBool("Hit", false);
+    }
+
+    IEnumerator LoadLoseScene()
+    {
+        yield return new WaitForSeconds(.1f);
+        Destroy(gameObject);
+        SceneManager.LoadScene(06);
     }
 
     void Shake()

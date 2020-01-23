@@ -20,6 +20,15 @@ public class GameSceneManager : MonoBehaviour
         SceneManager.LoadScene(01);
     }
 
+    public void LoadNextGameTutorialScene()
+    {
+        SceneManager.LoadScene(04);
+    }
+
+    public void LoadNextGame()
+    {
+        SceneManager.LoadScene(03);
+    }
 
     public void QuitApplication()
     {

@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Next Game Scene.unity
     guid: e50daae82e8061f4792f67d549dfb1ec
+  - enabled: 1
+    path: Assets/Scenes/Next game tutorial Scene.unity
+    guid: 9ffac6fd2134a05468f2c01e56fc2512
+  - enabled: 1
+    path: Assets/Scenes/Next Game Win Scene.unity
+    guid: 222a072d30dd9a44094fe9ce845ce79b
+  - enabled: 1
+    path: Assets/Scenes/Next Game Lose Scene.unity
+    guid: 307ace1b29e602c4593cd2a437c7e249
   m_configObjects: {}
