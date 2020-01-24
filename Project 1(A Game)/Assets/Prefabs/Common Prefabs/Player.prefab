@@ -474,8 +474,8 @@ MonoBehaviour:
     - 'Doctor : Seb, your grandpa contacted yesterday.'
     - 'Seb : Did he?'
     - 'Doctor : I have the medicine ready.'
-    - 'Doctor : Ok. So give me 20 coins.'
-    - 'Seb : But I have don''t have 20 coins.'
+    - 'Doctor : Ok. So give me 10 coins.'
+    - 'Seb : But I have don''t have 10 coins.'
     - 'Doctor : Sorry, seb you have to collect them now.'
     - 'Doctor : Ok. Return when you have all of them.'
 --- !u!114 &6854542140598892299

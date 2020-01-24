@@ -104,6 +104,7 @@ public class MainPlayer : MonoBehaviour
         }
         else if(health <= 0 && (score > wizardScore))
         {
+            temp = Instantiate(destroyParticle, transform.position, Quaternion.identity);
             levelLoader.LoadNextScene(05);
             //SceneManager.LoadScene(05);
         }
