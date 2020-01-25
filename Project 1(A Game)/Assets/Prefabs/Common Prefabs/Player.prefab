@@ -188,7 +188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2954440910868600283}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.165, y: -0.5, z: 0}
+  m_LocalPosition: {x: -0.084, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2954440911062363428}
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnWall: 0
   movementSpeed: 250
-  radius: 0.24
+  radius: 0.2
   wallJumpRadius: 0.06
   jumpForce: 800
   wallJumpForce: 450
@@ -533,12 +533,12 @@ MonoBehaviour:
   dialouge:
     sentences:
     - 'Teacher : Why didn,t you come to school yesterday?'
-    - 'Seb : I was wwatching my favourite T.V Program. '
+    - 'Seb : I was watching my favourite T.V Program. '
     - 'Teacher : Idiot.'
     - 'Teacher : Where are you goin now?'
     - 'seb : secret.'
     - 'Seb : I will tell you tomorrow as an excuse.'
-    - 'Teacher : Fool.'
+    - 'Teacher: Fool.'
 --- !u!114 &3356688897521143664
 MonoBehaviour:
   m_ObjectHideFlags: 0

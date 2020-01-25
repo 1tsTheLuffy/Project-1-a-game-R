@@ -391,7 +391,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-       // Gizmos.DrawWireSphere(jumpPoint.position, radius);
-      //  Gizmos.DrawWireSphere(wallPoint.position, wallJumpRadius);
+        Gizmos.DrawWireSphere(jumpPoint.position, radius);
+         Gizmos.DrawWireSphere(wallPoint.position, wallJumpRadius);
     }
 }
